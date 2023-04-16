@@ -23,9 +23,11 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Category Name</th>
+                                <th>Description</th>
                                 <th>Image</th>
+                                <th>Meta Keyword</th>
                                 <th>Status</th>
-                                <th>Edit</th>
+                                <th>Action(s)</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -33,9 +35,12 @@
                                 <tr>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->name}}</td>
-                                    <td><img src="{{asset('img/'.$item->image)}}" alt="Not Found Image" width="50px" height="50px"></td>
+                                    <td>{!! $item->description !!}</td>
+                                    <td><img src="{{asset('img/'.$item->image)}}" alt="Not Found Image" width="70px" height="70px"></td>
+                                    <td>{!! $item->meta_keyword !!}</td>
                                     <td>{{$item->status=='1' ? 'Inactive':'Active'}}</td>
-                                    <td><a href="" class="btn btn-success">Edit</a></td>
+                                    <td><a href="{{url('admin/edit-category/'.$item->id)}}" class="btn btn-success">Edit</a>
+                                    <a href="{{url('admin/delete-category/'.$item->id)}}" class="btn btn-danger">Delete</a></td>
                                 </tr> 
                                 @endforeach
                                 </tbody>   

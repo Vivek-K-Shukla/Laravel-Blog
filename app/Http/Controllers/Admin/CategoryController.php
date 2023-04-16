@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use File;
 
 class CategoryController extends Controller
 {
@@ -64,5 +65,58 @@ class CategoryController extends Controller
     else{
         return back()->with('fail','Something Went Wrong!');
     }  
+    }
+
+    public function edit($id){
+        $edit=Category::find($id);
+        return view('admin.category.edit',compact('edit'));
+    }
+
+    public function update(Request $request){
+        $update=Category::find($request->id);
+        $update->name=$request->name;
+        $update->slug=$request->slug;
+        $update->description=$request->description;
+        //Updating File/Image:
+        if($request->hasfile('image')){
+            $destination='img/'.$update->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $file=$request->file('image');
+            $extenstion=$file->getClientOriginalExtension();
+            $filename=time().'.'.$extenstion;
+            $file->move('img/',$filename);
+            $update->image=$filename;
+        }
+        $update->meta_title=$request->meta_title;
+        $update->meta_description=$request->meta_description;
+        $update->meta_keyword=$request->meta_keyword;
+        $update->navbar_status=$request->navbar_status==true ? '1':'0';
+        $update->status=$request->status==true ? '1':'0';
+        $update->created_by=Auth::user()->id;
+        $update->save();
+        if($update){
+         return redirect('admin/category')->with('success','You have updated category successfully!');
+     }
+     else{
+         return back()->with('fail','Something Went Wrong!');
+     } 
+    }
+
+
+    public function delete($id){
+        $category=Category::find($id);
+        if($category){
+            $destination='img/'.$category->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $category->delete();
+            return redirect('admin/category')->with('success','You have deleted category successfully!');
+        }
+        else{
+            return back()->with('fail','Something Went Wrong!');
+        } 
     }
 }
