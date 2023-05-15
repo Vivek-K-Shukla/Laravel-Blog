@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
-
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,4 +32,9 @@ Route::post('/add-post',[PostController::class,'store']);
 Route::get('/edit-post/{id}',[PostController::class,'edit']);
 Route::put('/update-post/{id}',[PostController::class,'update']);
 Route::get('/delete-post/{id}',[PostController::class,'delete']);
+
+// User Section
+Route::get('/users',[UserController::class,'index']);
+Route::get('/edit-user/{id}',[UserController::class,'edit']);
+Route::put('/update-user/{id}',[UserController::class,'update']);
 });
