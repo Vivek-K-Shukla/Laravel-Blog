@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
 
 
 Route::get('/', function () {
@@ -15,10 +16,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 Route::get('/dashboard',[DashboardController::class,'index']);
+
+// Category Section
 Route::get('/category',[CategoryController::class,'index']);
 Route::get('/add-category',[CategoryController::class,'create']);
 Route::post('/add-category',[CategoryController::class,'store']);
 Route::get('/edit-category/{id}',[CategoryController::class,'edit']);
 Route::post('/update-category',[CategoryController::class,'update']);
 Route::get('/delete-category/{id}',[CategoryController::class,'delete']);
+
+// Post Section
+Route::get('/posts',[PostController::class,'index']);
+Route::get('/add-posts',[PostController::class,'create']);
+Route::post('/add-post',[PostController::class,'store']);
+Route::get('/edit-post/{id}',[PostController::class,'edit']);
+Route::put('/update-post/{id}',[PostController::class,'update']);
+Route::get('/delete-post/{id}',[PostController::class,'delete']);
 });
