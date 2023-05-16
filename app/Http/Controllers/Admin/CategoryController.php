@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use File;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -42,7 +43,7 @@ class CategoryController extends Controller
 
        $category=new Category;
        $category->name=$request->name;
-       $category->slug=$request->slug;
+       $category->slug = Str::slug($request->slug);
        $category->description=$request->description;
       //Adding an Image:
       if($request->hasfile('image')){
@@ -75,7 +76,7 @@ class CategoryController extends Controller
     public function update(Request $request){
         $update=Category::find($request->id);
         $update->name=$request->name;
-        $update->slug=$request->slug;
+        $update->slug = Str::slug($request->slug);
         $update->description=$request->description;
         //Updating File/Image:
         if($request->hasfile('image')){
