@@ -25,6 +25,19 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <!-- //Summernote CSS - CDN Link -->
 
+    <!-- Datatables Link -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <style>
+        div.dataTables_wrapper div.dataTables_length select{
+            width:50%;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button{
+            padding:0px !important;
+            margin:0px !important;
+        }
+    </style>
+
 </head>
 <body>
 @include('layouts.inc.admin-navbar')
@@ -53,5 +66,13 @@
         });
     </script>
     <!-- //Summernote JS - CDN Link -->
+
+    <!-- Datatables Js CDN Links -->
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+      let table = new DataTable('#myDataTable');
+      </script>
+    <!----------------------------------->
 </body>
 </html>
