@@ -5,11 +5,13 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Frontend\FrontendController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Admin Pannel Section..............................................................................
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -38,3 +40,12 @@ Route::get('/users',[UserController::class,'index']);
 Route::get('/edit-user/{id}',[UserController::class,'edit']);
 Route::put('/update-user/{id}',[UserController::class,'update']);
 });
+
+// .........................................................................................................
+  
+
+
+// Frontend Pannel Section..................................................................................
+Route::get('user',[FrontendController::class,'index']);
+Route::get('tutorial/{category_slug}',[FrontendController::class,'viewCategoryPost']);
+Route::get('/tutorial/{category_slug}/{post_slug}',[FrontendController::class,'viewPost']);
