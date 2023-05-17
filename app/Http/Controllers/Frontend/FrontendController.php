@@ -10,6 +10,8 @@ use App\Models\Post;
 class FrontendController extends Controller
 {
     public function index(){
+        $all_categories=Category::where('status','0')->get();
+        return view('frontend.index',compact('all_categories'));
         return view('frontend.index');
     }
 

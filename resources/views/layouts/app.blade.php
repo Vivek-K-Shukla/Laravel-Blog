@@ -19,18 +19,44 @@
   <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
   <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
 
+  <!-- Crousel Style -->
+  <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/owl.theme.default.min.css')}}">
+
 </head>
 <body>
     <div id="app">
     @include('layouts.inc.frontend-navbar')
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
 
        <!-- Scripts-->
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}" crossorigin="anonymous"></script>
+<script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script> 
 <script src="{{asset('assets/js/script.js')}}"></script> 
+<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script> 
+<script src="{{asset('assets/js/owl.theme.default.min.js')}}"></script>
+<script>
+$('.category-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    dots:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+</script> 
 </body>
 </html>
