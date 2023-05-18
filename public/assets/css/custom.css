@@ -34,3 +34,40 @@
     height:28px;
     width:38px !important;
 }
+
+.underline{
+    height:3px;
+    width:90px;
+    background-color:#e71212 !important;
+    margin-bottom:10px;
+}
+
+.bg-gray{
+    background-color: #ddd;
+}
+
+.bg-footer{
+    background-color: #15353f;
+}
+
+.footer-heading{
+    color:#ddd;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+}
+.footer-link a{
+    color:whitesmoke;
+    text-decoration:none;
+    font-size: 14px;
+}
+
+.footer-link a:hover{
+    color:#e71212;
+}
+
+.logo{
+    margin:15px 5px 0px 2px;
+    padding:12px;
+    border-radius:4px;
+    color:#ddd;
+}
