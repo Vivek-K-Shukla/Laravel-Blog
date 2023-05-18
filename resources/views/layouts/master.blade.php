@@ -74,5 +74,7 @@
       let table = new DataTable('#myDataTable');
       </script>
     <!----------------------------------->
+
+    @yield('scripts')
 </body>
 </html>
